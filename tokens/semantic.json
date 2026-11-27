@@ -1,0 +1,20 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "color": {
+    "background": { "$value": "{color.gray.0}", "$type": "color", "$description": "App canvas background" },
+    "foreground": { "$value": "{color.gray.950}", "$type": "color", "$description": "Primary text" },
+    "surface": { "$value": "{color.gray.50}", "$type": "color", "$description": "Card / panel surface" },
+    "surfaceForeground": { "$value": "{color.gray.950}", "$type": "color" },
+    "muted": { "$value": "{color.gray.100}", "$type": "color" },
+    "mutedForeground": { "$value": "{color.gray.500}", "$type": "color" },
+    "border": { "$value": "{color.gray.200}", "$type": "color", "$description": "1px hairline border" },
+    "primary": { "$value": "{color.gray.900}", "$type": "color" },
+    "primaryForeground": { "$value": "{color.gray.0}", "$type": "color" },
+    "secondary": { "$value": "{color.gray.100}", "$type": "color" },
+    "secondaryForeground": { "$value": "{color.gray.900}", "$type": "color" },
+    "success": { "$value": "{color.signal.green}", "$type": "color" },
+    "warning": { "$value": "{color.signal.amber}", "$type": "color" },
+    "destructive": { "$value": "{color.signal.red}", "$type": "color" },
+    "destructiveForeground": { "$value": "{color.gray.0}", "$type": "color" }
+  }
+}
