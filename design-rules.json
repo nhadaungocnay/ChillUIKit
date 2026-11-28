@@ -91,5 +91,32 @@
     "Limit KPI row to max 4 StatCards on desktop; collapse to 1 column on mobile.",
     "Include EmptyState, LoadingSkeleton, and ErrorState for async data views.",
     "Format all comment and audit timestamps as full DD/MM/YYYY HH:mm."
-  ]
+  ],
+  "deepRules": {
+    "accessibility": [
+      "Use semantic tokens (text-foreground, text-muted-foreground, bg-surface) to guarantee WCAG contrast in light & dark modes.",
+      "Always provide aria-label on icon-only buttons and visible focus-visible rings.",
+      "Support Escape to close Dialog/Drawer/Popover and Enter to submit forms."
+    ],
+    "formUx": [
+      "Place inline validation errors directly below FormField; never rely on toast-only errors.",
+      "Disable submit button and show loading state (ActionButton / Spinner) during async requests.",
+      "Use CurrencyInput with font-mono tabular-nums for financial amounts.",
+      "Confirm destructive actions (delete/reject) with AlertDialog."
+    ],
+    "tableUx": [
+      "Right-align numeric and currency columns with tabular-nums.",
+      "Always handle loading (LoadingSkeleton), empty (EmptyState), and error (ErrorState) states.",
+      "Surface active filters as removable chips (DynamicFilter) with a Clear all action."
+    ],
+    "typographyHierarchy": [
+      "Limit to 3 type scales per screen: Page Title (text-xl font-bold), Section Title (text-sm font-semibold), Body/Meta (text-xs).",
+      "Follow 4px spacing grid (gap-3, gap-4, p-4, space-y-6).",
+      "Display full DD/MM/YYYY HH:mm timestamps on comments and audit logs."
+    ],
+    "performance": [
+      "Lazy-load heavy views (FlowCanvas, GanttChart, Studio) with React.lazy + Suspense.",
+      "Avoid continuous infinite animations on data-heavy tables or dashboards."
+    ]
+  }
 }

@@ -197,6 +197,7 @@ function handleToolCall(name, args = {}) {
       chartRules: rules.chartRules,
       motionRules: rules.motionRules,
       uxChecklist: rules.uxChecklist,
+      deepRules: rules.deepRules,
     };
     return { content: [{ type: "text", text: JSON.stringify(payload, null, 2) }] };
   }
