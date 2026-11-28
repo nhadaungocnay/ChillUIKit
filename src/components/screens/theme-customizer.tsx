@@ -55,6 +55,7 @@ export function ThemeCustomizer({
   className,
 }: ThemeCustomizerProps) {
   const [radiusId, setRadiusId] = React.useState<string>("md");
+  const [styleId, setStyleId] = React.useState<string>("minimal");
   const [fontId, setFontId] = React.useState<string>("inter");
   const [fontScaleId, setFontScaleId] = React.useState<string>("default");
   const [customColor, setCustomColor] = React.useState<string>("");
@@ -116,6 +117,24 @@ export function ThemeCustomizer({
           options={[
             { value: "light", label: "Light" },
             { value: "dark", label: "Dark" },
+          ]}
+        />
+      </div>
+
+      {/* Style Preset */}
+      <div className="space-y-2">
+        <span className="text-xs font-medium text-foreground">Style Preset</span>
+        <SegmentedControl
+          value={styleId}
+          onChange={(v) => {
+            setStyleId(v);
+            document.documentElement.dataset.style = v;
+          }}
+          options={[
+            { value: "minimal", label: "Minimal" },
+            { value: "enterprise", label: "Enterprise" },
+            { value: "soft", label: "Soft" },
+            { value: "glass", label: "Glass" },
           ]}
         />
       </div>
