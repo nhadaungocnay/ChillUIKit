@@ -1,0 +1,95 @@
+{
+  "domains": {
+    "erp-finance": {
+      "label": "ERP / Internal Payment / Finance",
+      "theme": "neutral or indigo",
+      "fontPairing": "Inter + JetBrains Mono (tabular-nums for amounts)",
+      "layouts": ["app-shell", "workspace-layout", "list-layout", "detail-layout (ratio='2:1')"],
+      "components": [
+        "stat-card", "data-table", "currency-input", "editable-line-items",
+        "collapsible-card", "approval-chain", "audit-log", "attachment-manager",
+        "watcher-widget", "excel-toolbar", "import-review-modal", "print-sheet"
+      ],
+      "density": "compact-balanced (4px grid, tabular-nums on currency)",
+      "notes": "Use DetailLayout 2:1 for vouchers/records (main: form/line-items/comments; aside: status/attachments/watchers/audit-log)."
+    },
+    "saas-dashboard": {
+      "label": "SaaS Analytics & Operations Dashboard",
+      "theme": "indigo or emerald",
+      "fontPairing": "Plus Jakarta Sans + Inter",
+      "layouts": ["app-shell", "workspace-layout", "list-layout"],
+      "components": [
+        "stat-card", "chart", "usage-meter", "heatmap", "uptime-bar",
+        "data-table", "dynamic-filter", "command-palette", "notification-center"
+      ],
+      "density": "comfortable (max 4 KPI cards per row)",
+      "notes": "KPI cards can double as interactive queue filters; always pair charts with a clear period label."
+    },
+    "ai-copilot": {
+      "label": "AI Agent / Copilot Workspace",
+      "theme": "indigo or rose",
+      "fontPairing": "Inter + JetBrains Mono",
+      "layouts": ["app-shell", "split-pane"],
+      "components": [
+        "prompt-input", "thinking-state", "execution-steps", "tool-call-card",
+        "approval-card", "context-window", "inline-diff", "message-actions", "flow-canvas"
+      ],
+      "density": "spacious-readable",
+      "notes": "Always surface ApprovalCard before destructive/external tool calls and ContextWindow for token budget."
+    },
+    "admin-rbac": {
+      "label": "Admin, Roles & System Settings",
+      "theme": "neutral",
+      "fontPairing": "Inter + JetBrains Mono",
+      "layouts": ["app-shell", "settings-layout", "list-layout"],
+      "components": [
+        "permission-matrix", "data-table", "bulk-action-bar", "query-builder",
+        "language-switcher", "audit-log", "data-comparison"
+      ],
+      "density": "compact",
+      "notes": "Use PermissionMatrix for role×module RBAC and DataComparison for config/record diffs."
+    },
+    "crm-sales": {
+      "label": "CRM / Pipeline & Project Tracking",
+      "theme": "emerald or amber",
+      "fontPairing": "Plus Jakarta Sans + Inter",
+      "layouts": ["app-shell", "list-layout", "detail-layout (ratio='2:1')"],
+      "components": [
+        "kanban-board", "gantt-chart", "calendar-view", "grouped-list",
+        "comment-thread", "mention-input", "watcher-widget", "timeline"
+      ],
+      "density": "comfortable",
+      "notes": "Support switching between KanbanBoard, ListLayout, and CalendarView."
+    },
+    "auth-onboarding": {
+      "label": "Authentication & Onboarding",
+      "theme": "indigo or neutral",
+      "fontPairing": "Inter",
+      "layouts": ["auth-layout"],
+      "components": [
+        "form-field", "input", "password-input", "password-strength",
+        "otp-input", "onboarding-checklist", "stepper"
+      ],
+      "density": "focused-centered",
+      "notes": "Keep auth forms centered in AuthLayout with clear validation feedback."
+    }
+  },
+  "chartRules": {
+    "trend_over_time": "Use Chart (bar/line) with explicit period labels",
+    "quota_or_budget": "Use UsageMeter (used, limit)",
+    "daily_activity_density": "Use Heatmap",
+    "service_availability": "Use UptimeBar",
+    "single_metric_kpi": "Use StatCard (max 4 per row)"
+  },
+  "motionRules": {
+    "duration": "150ms–200ms ease-out for sidebar, drawers, and AnimatedCollapse",
+    "reducedMotion": "Avoid continuous infinite animations on data-heavy views"
+  },
+  "uxChecklist": [
+    "Never hardcode hex/rgb colors — use semantic Tailwind tokens only.",
+    "Use Page Layout Decision Tree: WorkspaceLayout / ListLayout / DetailLayout (ratio='2:1').",
+    "Limit KPI row to max 4 StatCards on desktop; collapse to 1 column on mobile.",
+    "Include EmptyState, LoadingSkeleton, and ErrorState for async data views.",
+    "Format all comment and audit timestamps as full DD/MM/YYYY HH:mm."
+  ]
+}

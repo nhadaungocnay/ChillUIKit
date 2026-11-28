@@ -49,7 +49,7 @@ Add ChillUIKit as a zero-dependency MCP server in Antigravity, Cursor, or Claude
 }
 ```
 
-Available MCP tools: `search_components`, `list_components`, `get_component_props`, `get_component_source`, `get_template`, `install_components` (with auto-dependency resolution).
+Available MCP tools: `recommend_design`, `search_components`, `list_components`, `get_component_props`, `get_component_source`, `get_template`, `install_components` (with auto-dependency resolution).
 
 ## Two Usage Modes
 

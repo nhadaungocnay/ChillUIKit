@@ -43,4 +43,4 @@
 - `UsageMeter` uses `used` and `limit` (not `value`/`max`).
 - `PropertyList` uses `rows={[{ label, value }]}` (not `items`).
 - Display full date-time strings (`DD/MM/YYYY HH:mm`) for comments and audit logs.
-- **MCP Workflow**: `search_components(query)` → `get_component_source(name)` → `get_template("templates")` → `install_components(targetDir, init, names)`.
+- **MCP Workflow**: `recommend_design(domain)` → `search_components(query)` → `get_component_props(names)` → `get_template("templates")` → `install_components(targetDir, init, names)`.

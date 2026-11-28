@@ -15,6 +15,20 @@ const GROUPS = ["layout", "ui", "ai", "screens"];
 
 const TOOLS = [
   {
+    name: "recommend_design",
+    description: "Get ChillUIKit design intelligence (recommended layouts, theme, font pairing, components, chart/motion rules, and UX checklist) for a product domain.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        domain: {
+          type: "string",
+          enum: ["erp-finance", "saas-dashboard", "ai-copilot", "admin-rbac", "crm-sales", "auth-onboarding"],
+          description: "Target application domain. Omit to list all supported domains.",
+        },
+      },
+    },
+  },
+  {
     name: "search_components",
     description: "Search ChillUIKit components and layouts by keyword (e.g. 'table', 'audit', 'layout', 'currency').",
     inputSchema: {
@@ -163,6 +177,29 @@ function resolveComponentDeps(modName, registry, visited = new Set()) {
 
 function handleToolCall(name, args = {}) {
   const registry = readRegistry();
+
+  if (name === "recommend_design") {
+    const rules = JSON.parse(fs.readFileSync(path.join(rootDir, "design-rules.json"), "utf8"));
+    const domainKey = args.domain ? String(args.domain) : null;
+    if (!domainKey) {
+      const summary = Object.entries(rules.domains)
+        .map(([k, v]) => `- ${k}: ${v.label}`)
+        .join("\n");
+      return { content: [{ type: "text", text: `Available domains:\n${summary}` }] };
+    }
+    const domainRule = rules.domains[domainKey];
+    if (!domainRule) {
+      return { isError: true, content: [{ type: "text", text: `Unknown domain: ${domainKey}` }] };
+    }
+    const payload = {
+      domain: domainKey,
+      ...domainRule,
+      chartRules: rules.chartRules,
+      motionRules: rules.motionRules,
+      uxChecklist: rules.uxChecklist,
+    };
+    return { content: [{ type: "text", text: JSON.stringify(payload, null, 2) }] };
+  }
 
   if (name === "search_components") {
     const q = String(args.query || "").trim().toLowerCase();
